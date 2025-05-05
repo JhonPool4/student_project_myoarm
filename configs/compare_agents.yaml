@@ -1,0 +1,16 @@
+agent_names:
+  - test_0
+  - test_1
+  - test_2
+
+#legend_names:
+#  - custom_name_to_test_0
+#  - custom_name_to_test_1
+#  - custom_name_to_test_2  
+
+#legend_colors:
+#  - [255, 0, 0]
+#  - [0, 255, 0]
+#  - [0, 0, 255]
+
+test_episodes: 20

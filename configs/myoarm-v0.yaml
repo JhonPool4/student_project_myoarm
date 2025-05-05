@@ -1,0 +1,92 @@
+env:
+  model_name: myoarm
+  sim_time: 4.0
+  sim_dt: 0.002
+  control_dt: 0.01
+  render_flag: false
+  gravity_flag: true
+  random_qpos_init: true
+  random_qvel_init: true
+  center_reach_qpos_init: true
+  equidistant_reach_qpos_init: false
+  sensor_with_gravity_correction: true
+  ndof: 3
+
+  synergies:
+    flag: true
+    add_act: false
+    add_obs: false
+    phi: 0
+    syn_id: 0
+    tag: d2_n5
+    
+  noise:
+    dependent:
+      flag: true
+      std: 0.103
+    motor:
+      flag: true
+      std: 0.185
+    
+goal:
+  metric: 
+    pos_flag: true
+  
+  threshold:
+    curriculum_flag: true 
+    random_threshold: 
+      flag: true
+      prob: 0.2
+    resolution:
+      pos: 0.01
+    init:
+      pos: 0.15
+    max:
+      pos: 0.15
+    min:
+      pos: 0.02
+
+  type: 'cylinder'
+  cylinder:
+    radius: 0.30
+    height: 0.10
+    center:
+      x0:  0.350
+      y0: -0.263
+      z0:  0.050
+
+
+reward:
+  op_priority: 100 
+  
+  stabilization:
+    flag: true 
+    obs: 'time' 
+    end_reward: 10
+    measurement: 'pos'
+    points: 50
+
+  time_minimization:
+    flag: true
+    max: -2
+    min: -3
+  
+  optimality_principles:
+    flag: true
+    coefficient:              # TO DO: coefficient for each optimality principle
+      effort: 1.0
+      jerk:   1.0
+      work:   1.0
+    op_flag:                  # TO DO: activate/deactivate each optimality principle
+      effort: false
+      jerk:   false
+      work:   false
+    jerk: 
+      articular:
+        flag: false
+        clip_value: 10000
+      cartesian:
+        flag: true
+        clip_value: 5000
+    work:
+      clip_value: 100

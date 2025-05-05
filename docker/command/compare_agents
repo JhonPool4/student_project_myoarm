@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "======================================="  
+echo " Running compare agents comamnd"
+echo "======================================="  
+
+# check paths
+echo "[START] DOCKER_COMPOSE_PATH: $DOCKER_COMPOSE_PATH"
+
+export DOCKER_BUILDKIT=0
+if [[ "$TRAINING_MODE" == "macMx" ]]; then
+  docker compose -f $DOCKER_COMPOSE_PATH -p train-agent up --build local-compare-agents-image
+
+elif [[ "$TRAINING_MODE" == "windows" ]]; then
+  docker compose -f $DOCKER_COMPOSE_PATH -p train-agent up --build local-compare-agents-image
+
+elif [[ "$TRAINING_MODE" == "linux" ]]; then
+  docker compose -f $DOCKER_COMPOSE_PATH -p train-agent up --build local-compare-agents-image
+
+else
+  echo "[ERROR] TRAINING_MODE: $TRAINING_MODE is not supported"
+  exit 1
+fi

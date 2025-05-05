@@ -1,0 +1,33 @@
+#base image
+FROM jhonpool4/student-project-myoarm
+
+# create source directory
+#RUN mkdir /workspace
+#WORKDIR /workspace
+#COPY src/ /workspace/
+
+# Prevent tzdata from prompting for region
+ARG DEBIAN_FRONTEND=noninteractive
+# Install Python, pip, glfw dependencies, xvfb (fake viewer).
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip    \
+    ffmpeg \
+    xvfb \
+    libglx-mesa0 \
+    libosmesa6 \
+    libgl1 \
+    libglfw3 \
+    libglfw3-dev \
+    libx11-6 \
+    libxrandr2 \
+    libxinerama1 \
+    libxcursor1 \
+    libxi6 \
+    libgles2-mesa-dev \
+    libopengl0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*    
+
+RUN pip install --break-system-packages -r requirements.txt
+
+

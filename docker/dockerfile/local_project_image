@@ -1,0 +1,7 @@
+#base image
+FROM ubuntu:24.04
+
+# create source directory
+RUN mkdir /workspace
+WORKDIR /workspace
+COPY src/ /workspace/

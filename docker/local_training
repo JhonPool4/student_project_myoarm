@@ -1,0 +1,35 @@
+#!/bin/bash
+
+export TRAINING_MODE=$2 # macMx, windows, linux
+# some paths
+export DOCKER_PATH="$PWD/docker"
+export DOCKER_CONFIG_PATH="$DOCKER_PATH/config"
+export DOCKER_SRC_PATH="$DOCKER_PATH/src/"
+export DOCKER_COMPOSE_PATH="$DOCKER_PATH/docker-compose.yml"
+export DOCKER_COMMANDS_PATH="$DOCKER_PATH/command"
+
+if [[ "$1" == "start" || "$1" == "evaluate_agent" || "$1" == "compare_agents" ]]; then  
+  mkdir -p $DOCKER_SRC_PATH
+  cp -r configs $DOCKER_SRC_PATH
+  echo "[INIT] Copied new configurations"
+fi
+
+if [[ "$1" == "init" ]]; then
+  bash $DOCKER_COMMANDS_PATH/init
+
+elif [[ "$1" == "start" ]]; then
+  bash $DOCKER_COMMANDS_PATH/start
+
+elif [[ "$1" == "evaluate_agent" ]]; then
+  bash $DOCKER_COMMANDS_PATH/evaluate_agent
+
+elif [[ "$1" == "compare_agents" ]]; then
+  bash $DOCKER_COMMANDS_PATH/compare_agents
+
+elif [[ "$1" == "stop" ]]; then
+  bash $DOCKER_COMMANDS_PATH/stop
+
+else
+  echo "[Init] Invalid command: $1"
+  exit 1
+fi

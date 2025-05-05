@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "======================================="  
+echo " Running init comamnd"
+echo "======================================="  
+
+# check paths
+echo "[INIT] DOCKER_COMPOSE_PATH: $DOCKER_COMPOSE_PATH"
+
+# create rl-mujoco-base-image with all the dependencies
+export DOCKER_BUILDKIT=0
+docker compose -f $DOCKER_COMPOSE_PATH -p train-agent build local-base-image
+
+# succes info
+echo "[INIT] Docker image successfully built"

@@ -1,0 +1,48 @@
+services:
+  local-project-image: # cp source code
+    build:
+      context: .
+      dockerfile: dockerfile/local_project_image
+    image: jhonpool4/student-project-myoarm
+
+  local-base-image: # install requirements.txt
+    build:
+      context: .
+      dockerfile: dockerfile/local_base_image
+    image: myoarm-optimality-principles    
+
+  local-train-image: # cp configs
+    build:
+      context: .
+      dockerfile: dockerfile/local_agent_image
+    volumes:
+      - ${PWD}/output:/workspace/output # linux, mac style path. windows requries git bash
+    working_dir: /workspace
+    environment:
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - WANDB_USER_NAME=${WANDB_USER_NAME}
+    command: python3 main.py
+    image: local-myoarm-agent
+
+  local-evaluate-image:
+    build:
+      context: .
+      dockerfile: dockerfile/local_agent_image
+    volumes:
+      - ${PWD}/output:/workspace/output
+    working_dir: /workspace
+    command: >
+      bash -c "Xvfb :99 -screen 0 1024x768x24 & 
+            export DISPLAY=:99 && 
+            python3 -u local_evaluate_agent.py"
+    image: local-myoarm-agent
+
+  local-compare-agents-image:
+    build:
+      context: .
+      dockerfile: dockerfile/local_agent_image
+    volumes:
+      - ${PWD}/output:/workspace/output
+    working_dir: /workspace
+    command: python3 local_compare_agents.py
+    image: local-myoarm-agent    

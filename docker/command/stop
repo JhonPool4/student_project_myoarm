@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "======================================="  
+echo " Running stop comamnd"
+echo "======================================="  
+# some paths
+echo "[STOP] TRAINING_MODE: $TRAINING_MODE"
+echo "[STOP] DOCKER_COMPOSE_PATH: $DOCKER_COMPOSE_PATH"
+
+docker compose -f $DOCKER_COMPOSE_PATH -p train-agent down

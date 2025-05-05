@@ -1,0 +1,6 @@
+# base image
+FROM myoarm-optimality-principles
+
+# update configs/
+WORKDIR /workspace
+COPY src/ /workspace/

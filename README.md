@@ -31,7 +31,7 @@ bash docker/local_training start windows
 # for linux
 bash docker/local_training start linux
 ```
-You can check the training plots on [wandb_dashboard](https://wandb.ai/jhoncharaja/student-project-myoarm). It will take around 50 minutes. Then, the training results will be store in **output/agent_name/**.
+You can check the training plots on [wandb_dashboard](https://wandb.ai/jhoncharaja/student_project_myoarm). It will take around 50 minutes. Then, the training results will be store in **output/agent_name/**.
 
 ## Optimality principles
 You just trained an agent with the default configuration: reach the target as fast as possible. This typically results in high muscle activation and potentially jerky movements (check the video and plots in the output). To modify the agent’s behavior, go to **configs/myoarm-v0.yaml**. Here, you can enable/disable and scale the influence of different optimality principles during movement generation.

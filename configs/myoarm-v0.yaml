@@ -1,3 +1,37 @@
+reward:
+  op_priority: 100            # TO DO: influence of the optimality priciples in percentage
+  optimality_principles:
+    flag: true
+    coefficient:              # TO DO: coefficient for each optimality principle
+      effort: 1.0
+      jerk:   1.0
+      work:   1.0
+    op_flag:                  # TO DO: activate/deactivate each optimality principle
+      effort: false
+      jerk:   false
+      work:   false
+    jerk: 
+      articular:
+        flag: false
+        clip_value: 10000
+      cartesian:
+        flag: true
+        clip_value: 5000
+    work:
+      clip_value: 100
+
+  stabilization:
+    flag: true 
+    obs: 'time' 
+    end_reward: 10
+    measurement: 'pos'
+    points: 50
+
+  time_minimization:
+    flag: true
+    max: -2
+    min: -3      
+
 env:
   model_name: myoarm
   sim_time: 4.0
@@ -56,37 +90,3 @@ goal:
       z0:  0.050
 
 
-reward:
-  op_priority: 100 
-  
-  stabilization:
-    flag: true 
-    obs: 'time' 
-    end_reward: 10
-    measurement: 'pos'
-    points: 50
-
-  time_minimization:
-    flag: true
-    max: -2
-    min: -3
-  
-  optimality_principles:
-    flag: true
-    coefficient:              # TO DO: coefficient for each optimality principle
-      effort: 1.0
-      jerk:   1.0
-      work:   1.0
-    op_flag:                  # TO DO: activate/deactivate each optimality principle
-      effort: false
-      jerk:   false
-      work:   false
-    jerk: 
-      articular:
-        flag: false
-        clip_value: 10000
-      cartesian:
-        flag: true
-        clip_value: 5000
-    work:
-      clip_value: 100

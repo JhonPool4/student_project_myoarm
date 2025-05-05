@@ -1,14 +1,13 @@
 agent_names:
   - test_0
-  - test_1
-  - test_2
+  - test_1  
 
-#legend_names:
+#legend_names: # Here you can set custom names for each agent.
 #  - custom_name_to_test_0
 #  - custom_name_to_test_1
 #  - custom_name_to_test_2  
 
-#legend_colors:
+#legend_colors: # Here You can set custom colors for each agent.
 #  - [255, 0, 0]
 #  - [0, 255, 0]
 #  - [0, 0, 255]

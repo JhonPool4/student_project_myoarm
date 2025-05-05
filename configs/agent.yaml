@@ -17,5 +17,5 @@ save:
 wandb:
   flag: True
   entity: jhoncharaja
-  tag: ['your_name_or_group_name']      # TODO: CHANGE THE TRAINING TAG HERE
+  tag: ['your_name_or_group_name', 'useful_tag']      # TODO: CHANGE THE TRAINING TAGS HERE
 

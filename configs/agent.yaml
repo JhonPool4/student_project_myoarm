@@ -1,7 +1,7 @@
 trainer:
   total_timesteps: 5_000_000          # OPTIONAL: INCREASE THE TRAINING STEPS
   model_save_freq: 1_000_000
-  log_freq: 1_000
+  log_freq: 10_000
   gradient_steps: 30
   env_steps: 250
   train_seed: 10

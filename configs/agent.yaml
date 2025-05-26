@@ -1,10 +1,10 @@
 trainer:
   total_timesteps: 5_000_000          # OPTIONAL: INCREASE THE TRAINING STEPS
   model_save_freq: 1_000_000
-  log_freq: 10_000
+  log_freq: 1_000
   gradient_steps: 30
   env_steps: 250
-  train_seed: 0
+  train_seed: 10
   eval_seed: 100
 env:
   name: myoarm-v0
@@ -13,7 +13,7 @@ env:
   performance_function: update_goal_threshold
 save:
   project_name: student_project_myoarm
-  run_name: test_4                      # TODO: CHANGE THE AGENT NAME HERE
+  run_name: test_10                      # TODO: CHANGE THE AGENT NAME HERE
 wandb:
   flag: True
   entity: jhoncharaja

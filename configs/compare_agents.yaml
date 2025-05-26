@@ -1,15 +1,25 @@
-agent_names:
+agent_names: # check in output/student_project_myoarm/agent_name
   - test_0
   - test_1  
 
+project_name: student_project_myoarm
+save_path: output/compare_agents/a_folder_name # Images will save here
+
+
+
+# OPTIONAL CONFIGURATION
+#checkpoint: 5_000_000  # In case you used a different total_timesteps.
+#test_episodes: 20      # Evaluation episodes for each agent.
+
 #legend_names: # Here you can set custom names for each agent.
-#  - custom_name_to_test_0
-#  - custom_name_to_test_1
-#  - custom_name_to_test_2  
+#  - custom_name_for_test_0
+#  - custom_name_for_test_1
+#  - custom_name_for_test_2  
 
 #legend_colors: # Here You can set custom colors for each agent.
 #  - [255, 0, 0]
 #  - [0, 255, 0]
 #  - [0, 0, 255]
 
-test_episodes: 20
+# legend_offset: 0.04 # Offset for the legend position w.r.t figure.
+
